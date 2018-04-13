@@ -1,4 +1,4 @@
-﻿// using MySql.Data.MySqlClient;
+﻿//using MySql.Data.MySqlClient;
 using Npgsql;
 using System.Data.Common;
 using System.Data.OracleClient;
