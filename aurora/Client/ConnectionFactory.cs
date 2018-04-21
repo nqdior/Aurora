@@ -8,11 +8,11 @@ using System.Data.SQLite;
 
 namespace Aurora
 {
-    internal sealed class InstanceProvider
+    internal sealed class ConnectionFactory
     {
         private readonly Engine _engine;
 
-        internal InstanceProvider(Engine engine)
+        internal ConnectionFactory(Engine engine)
         {
             _engine = engine;
         }
