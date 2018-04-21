@@ -16,14 +16,14 @@ namespace tester
             var server = new Server("test", Engine.SQLServer);
             server.Connection.ConnectionString = ConnectionString;
             var manager = new Manager(server);
-            manager.GetData("select * from Centipede.dbo.be;");
+            var list = manager.GetData(new QueryProvider(Engine.SQLServer).DatabaseListQuery());             
         }
 
         private string ConnectionString
         {
             get
             {
-                var connectionString = Builder.SqlConnectionBuilder();
+                var connectionString = BuilderProvider.SqlConnectionStringBuilder();
                 connectionString.DataSource = "localhost";
                 connectionString.IntegratedSecurity = true;
                 return connectionString.ToString();

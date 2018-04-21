@@ -17,7 +17,7 @@ namespace Aurora
             Name = name;
             Engine = engine;
 
-            var factory = new Factory(engine);
+            var factory = new InstanceProvider(engine);
             Connection = factory.CreateConnection();
         }
     }
