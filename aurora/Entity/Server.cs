@@ -1,11 +1,7 @@
-﻿using System;
-using System.Data.Common;
+﻿using System.Data.Common;
 
-namespace aurora
+namespace Aurora
 {
-    /// <summary>
-    /// Server情報 構造体
-    /// </summary>
     public class Server
     {
         public DbConnection Connection;
@@ -21,7 +17,7 @@ namespace aurora
             Name = name;
             Engine = engine;
 
-            var factory = new InstrumentFactory(engine);
+            var factory = new Factory(engine);
             Connection = factory.CreateConnection();
         }
     }

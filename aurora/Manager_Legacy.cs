@@ -2,9 +2,9 @@
 using System.Data.Common;
 using System.Threading.Tasks;
 
-namespace aurora
+namespace Aurora
 {
-    public class ServerManager
+    public class Manager_Legacy
     {
         private DbCommand _command;
 
@@ -12,7 +12,7 @@ namespace aurora
 
         private DbTransaction _transaction;
 
-        private InstrumentFactory _factory;
+        private Factory _factory;
 
         public DbConnection Connection { get; }
 
@@ -20,9 +20,9 @@ namespace aurora
 
         public DataTableCollection Tables { get { return Stacker.Tables; } }
 
-        public ServerManager(Server server)
+        public Manager_Legacy(Server server)
         {
-            _factory = new InstrumentFactory(server.Engine);
+            _factory = new Factory(server.Engine);
             _adapter = _factory.CreateAdapter();
 
             Connection = server.Connection;
