@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Runtime.InteropServices;
+using System.Data;
 
 namespace Aurora
 {
@@ -20,7 +21,7 @@ namespace Aurora
 
         public void Close() => _connection.Close();
 
-        public void ChangeDatabase(string databaseName) => _connection.ChangeDatabase(databaseName);
+        public ConnectionState State => _connection.State;
 
         public void Execute(string query) => Execute(new List<string>() { query });
 

@@ -10,8 +10,6 @@ namespace Aurora
 
         public Engine Engine { get; }
 
-        public Tables Tables => new Tables();
-
         public Server(string name, Engine engine)
         {
             Name = name;
