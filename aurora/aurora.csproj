@@ -106,7 +106,7 @@
   <ItemGroup>
     <Compile Include="ConnectionBuilder.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="Manager_Legacy.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Entity\Engine.cs" />
     <Compile Include="Entity\Servers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

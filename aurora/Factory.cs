@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Npgsql;
+using System;
 using System.Data.Common;
 using System.Data.OracleClient;
 using System.Data.SqlClient;
@@ -16,34 +17,35 @@ namespace Aurora
             _engine = engine;
         }
 
-        public DbCommand CreateCommand(string command)
+        public DbCommand CreateCommand(string query)
         {
             switch (_engine)
             {
                 case Engine.SQLServer:
-                    return new SqlCommand(command);
+                    return new SqlCommand(query);
 
                 case Engine.PostgreSQL:
-                    return new NpgsqlCommand(command);
+                    return new NpgsqlCommand(query);
 
                 case Engine.MySQL:
-                    return new MySqlCommand(command);
+                    return new MySqlCommand(query);
 
                 case Engine.MariaDB:
-                    return new MySqlCommand(command);
+                    return new MySqlCommand(query);
 
                 case Engine.SQLite:
-                    return new SQLiteCommand(command);
+                    return new SQLiteCommand(query);
 
                 case Engine.Oracle:
                     #pragma warning disable CS0618
-                    return new OracleCommand(command);
+                    return new OracleCommand(query);
 
                 default:
-                    throw new System.Exception();
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
+        [Obsolete("this method will delete.")]
         public DbDataAdapter CreateAdapter()
         {
             switch (_engine)
@@ -68,7 +70,7 @@ namespace Aurora
                     return new OracleDataAdapter();
 
                 default:
-                    throw new System.Exception();
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -96,7 +98,7 @@ namespace Aurora
                     return new OracleConnection();
 
                 default:
-                    throw new System.Exception();
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
