@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("Aurora.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Aurora")]
+[assembly: AssemblyDescription("Multi Database Connection Manager.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("Delight")]
+[assembly: AssemblyProduct("Aurora")]
+[assembly: AssemblyCopyright("© 2018 Delight.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.4.2.2")]
+[assembly: AssemblyFileVersion("0.4.2.2")]
 [assembly: NeutralResourcesLanguage("ja-JP")]
 

@@ -1,13 +1,5 @@
 ﻿using Aurora;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace tester
@@ -21,7 +13,21 @@ namespace tester
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var server = new Server("test", Engine.SQLServer);
+            server.Connection.ConnectionString = ConnectionString;
+            var manager = new Manager(server);
+            manager.GetData("select * from Centipede.dbo.be;");
+        }
 
+        private string ConnectionString
+        {
+            get
+            {
+                var connectionString = Builder.SqlConnectionBuilder();
+                connectionString.DataSource = "localhost";
+                connectionString.IntegratedSecurity = true;
+                return connectionString.ToString();
+            }
         }
     }
 }

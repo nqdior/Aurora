@@ -6,7 +6,7 @@ using System.Data.SQLite;
 
 namespace Aurora
 {
-    public static class ConnectionBuilder
+    public static class Builder
     {
         public static SqlConnectionStringBuilder SqlConnectionBuilder() => new SqlConnectionStringBuilder();
 
