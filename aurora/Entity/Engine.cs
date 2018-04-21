@@ -1,4 +1,4 @@
-﻿//using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Npgsql;
 using System.Data.Common;
 using System.Data.OracleClient;
@@ -7,7 +7,6 @@ using System.Data.SQLite;
 
 namespace aurora
 {
-
     public enum Engine
     {
         SQLServer = 0,
@@ -18,17 +17,14 @@ namespace aurora
         Oracle = 5
     }
 
-
-    public class InstrumentFactory
+    public sealed class InstrumentFactory
     {
         private readonly Engine _engine;
-
 
         public InstrumentFactory(Engine engine)
         {
             _engine = engine;
         }
-
 
         public DbCommand CreateCommand(string command)
         {
@@ -40,16 +36,17 @@ namespace aurora
                 case Engine.PostgreSQL:
                     return new NpgsqlCommand(command);
 
-                //case Engine.MySQL:
-                //    return new MySqlCommand(command);
+                case Engine.MySQL:
+                    return new MySqlCommand(command);
 
-                //case Engine.MariaDB:
-                //    return new MySqlCommand(command);
+                case Engine.MariaDB:
+                    return new MySqlCommand(command);
 
                 case Engine.SQLite:
                     return new SQLiteCommand(command);
 
                 case Engine.Oracle:
+                    #pragma warning disable CS0618
                     return new OracleCommand(command);
 
                 default:
@@ -67,16 +64,17 @@ namespace aurora
                 case Engine.PostgreSQL:
                     return new NpgsqlDataAdapter();
 
-                //case Engine.MySQL:
-                //    return new MySqlDataAdapter();
+                case Engine.MySQL:
+                    return new MySqlDataAdapter();
 
-                //case Engine.MariaDB:
-                //    return new MySqlDataAdapter();
+                case Engine.MariaDB:
+                    return new MySqlDataAdapter();
 
                 case Engine.SQLite:
                     return new SQLiteDataAdapter();
 
                 case Engine.Oracle:
+                    #pragma warning disable CS0618
                     return new OracleDataAdapter();
 
                 default:
@@ -94,16 +92,17 @@ namespace aurora
                 case Engine.PostgreSQL:
                     return new NpgsqlConnection();
 
-                //case Engine.MySQL:
-                //    return new MySqlConnection();
+                case Engine.MySQL:
+                    return new MySqlConnection();
 
-                //case Engine.MariaDB:
-                //    return new MySqlConnection();
+                case Engine.MariaDB:
+                    return new MySqlConnection();
 
                 case Engine.SQLite:
                     return new SQLiteConnection();
 
                 case Engine.Oracle:
+                    #pragma warning disable
                     return new OracleConnection();
 
                 default:
