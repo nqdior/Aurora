@@ -136,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aurora.ico" />
-    <Content Include="Resources\BetaIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
