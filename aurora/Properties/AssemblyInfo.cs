@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System;
 
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
@@ -34,6 +35,7 @@ using System.Runtime.InteropServices;
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.4.2.2")]
+[assembly: CLSCompliant(true)]
 [assembly: AssemblyFileVersion("0.4.2.2")]
 [assembly: NeutralResourcesLanguage("ja-JP")]
 

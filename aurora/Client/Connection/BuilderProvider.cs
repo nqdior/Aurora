@@ -4,7 +4,7 @@ using System.Data.OracleClient;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 
-namespace Aurora
+namespace Aurora.Data.Client.Connection
 {
     public static class BuilderProvider
     {
@@ -12,7 +12,7 @@ namespace Aurora
 
         public static MySqlConnectionStringBuilder MySqlConnectionStringBuilder() => new MySqlConnectionStringBuilder();
 
-        public static NpgsqlConnectionStringBuilder PgSqlConnectionStringBuilder() => new NpgsqlConnectionStringBuilder();
+        public static NpgsqlConnectionStringBuilder PGSqlConnectionStringBuilder() => new NpgsqlConnectionStringBuilder();
 
         public static MySqlConnectionStringBuilder MariaDBConnectionStringBuilder() => new MySqlConnectionStringBuilder();
 

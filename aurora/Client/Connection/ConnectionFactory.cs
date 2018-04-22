@@ -6,7 +6,7 @@ using System.Data.OracleClient;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 
-namespace Aurora
+namespace Aurora.Data.Client.Connection
 {
     internal sealed class ConnectionFactory
     {
@@ -21,13 +21,13 @@ namespace Aurora
         {
             switch (_engine)
             {
-                case Engine.SQLServer:
+                case Engine.SqlServer:
                     return new SqlConnection();
 
-                case Engine.PostgreSQL:
+                case Engine.PostgreSql:
                     return new NpgsqlConnection();
 
-                case Engine.MySQL:
+                case Engine.MySql:
                     return new MySqlConnection();
 
                 case Engine.MariaDB:
@@ -41,7 +41,7 @@ namespace Aurora
                     return new OracleConnection();
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("engine");
             }
         }
     }

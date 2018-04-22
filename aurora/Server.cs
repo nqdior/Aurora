@@ -1,6 +1,7 @@
-﻿using System.Data.Common;
+﻿using Aurora.Data.Client.Connection;
+using System.Data.Common;
 
-namespace Aurora
+namespace Aurora.Data
 {
     public class Server
     {

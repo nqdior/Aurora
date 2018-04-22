@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="aurora">
-      <HintPath>..\aurora\bin\Debug\aurora.dll</HintPath>
+    <Reference Include="Aurora.Data">
+      <HintPath>..\aurora\bin\Debug\Aurora.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
