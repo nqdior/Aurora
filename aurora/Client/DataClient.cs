@@ -16,10 +16,6 @@ namespace Aurora.Data.Client
         
         public DataClient(Server server)
         { 
-            if (server == null)
-            {
-                throw new ArgumentNullException("server");
-            }
             _connection = server.Connection;
         }
 
