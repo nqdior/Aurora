@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Aurora.Viewer
 {
@@ -14,19 +14,19 @@ namespace Aurora.Viewer
 
         public void InitializeComponent()
         {
+            SuspendLayout();
+
             var resource = new ComponentResourceManager(typeof(BaseForm));
-            var Button_Min = new ToolStripMenuItem((Image)resource.GetObject("Min"))
-            {
-                Alignment = ToolStripItemAlignment.Right
-            };
-            var Button_Max = new ToolStripMenuItem((Image)resource.GetObject("Max"))
-            {
-                Alignment = ToolStripItemAlignment.Right
-            };
-            var Button_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"))
-            {
-                Alignment = ToolStripItemAlignment.Right
-            };
+
+            var Button_Min = new ToolStripMenuItem((Image)resource.GetObject("Min"));
+            Button_Min.Alignment = ToolStripItemAlignment.Right;
+
+            var Button_Max = new ToolStripMenuItem((Image)resource.GetObject("Max"));
+            Button_Max.Alignment = ToolStripItemAlignment.Right;
+
+            var Button_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
+            Button_Close.Alignment = ToolStripItemAlignment.Right;        
+
             var FormBar = new MenuStrip();
             FormBar.Items.AddRange(new ToolStripItem[] { Button_Close, Button_Max, Button_Min });
             Controls.Add(FormBar);
@@ -36,6 +36,8 @@ namespace Aurora.Viewer
             Button_Close.Click += (sender, e) => Close();
             FormBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
             FormBar.MouseDoubleClick += (sender, e) => Button_Max.PerformClick();
+
+            ResumeLayout();
         }
     }
 }
