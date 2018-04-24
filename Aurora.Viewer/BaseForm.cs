@@ -6,6 +6,8 @@ namespace Aurora.Viewer
 {
     public partial class BaseForm : Form
     {
+        public MenuStrip TitleBar { get; set; }
+
         public BaseForm() 
         {
             ControlBox = false;
@@ -18,24 +20,28 @@ namespace Aurora.Viewer
 
             var resource = new ComponentResourceManager(typeof(BaseForm));
 
-            var Button_Min = new ToolStripMenuItem((Image)resource.GetObject("Min"));
-            Button_Min.Alignment = ToolStripItemAlignment.Right;
+            var Item_Min = new ToolStripMenuItem((Image)resource.GetObject("Min"));
+            Item_Min.Alignment = ToolStripItemAlignment.Right;
 
-            var Button_Max = new ToolStripMenuItem((Image)resource.GetObject("Max"));
-            Button_Max.Alignment = ToolStripItemAlignment.Right;
+            var Item_Max = new ToolStripMenuItem((Image)resource.GetObject("Max"));
+            Item_Max.Alignment = ToolStripItemAlignment.Right;
 
-            var Button_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
-            Button_Close.Alignment = ToolStripItemAlignment.Right;        
+            var Item_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
+            Item_Close.Alignment = ToolStripItemAlignment.Right;        
 
-            var FormBar = new MenuStrip();
-            FormBar.Items.AddRange(new ToolStripItem[] { Button_Close, Button_Max, Button_Min });
-            Controls.Add(FormBar);
+            TitleBar = new MenuStrip();
+            TitleBar.Items.AddRange(new ToolStripItem[] { Item_Close, Item_Max, Item_Min });
+            Controls.Add(TitleBar);
 
-            Button_Min.Click += (sender, e) => WindowState = FormWindowState.Minimized;
-            Button_Max.Click += (sender, e) => WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-            Button_Close.Click += (sender, e) => Close();
-            FormBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
-            FormBar.MouseDoubleClick += (sender, e) => Button_Max.PerformClick();
+            Item_Min.Click += (sender, e) => WindowState = FormWindowState.Minimized;
+            Item_Max.Click += (sender, e) =>
+            {
+                WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
+                Item_Max.Image = (Image)(WindowState == FormWindowState.Maximized ? resource.GetObject("Normal") : resource.GetObject("Max"));
+            };
+            Item_Close.Click += (sender, e) => Close();
+            TitleBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
+            TitleBar.MouseDoubleClick += (sender, e) => Item_Max.PerformClick();
 
             ResumeLayout();
         }
