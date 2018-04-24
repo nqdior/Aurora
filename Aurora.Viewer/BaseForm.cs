@@ -6,6 +6,7 @@ namespace Aurora.Viewer
 {
     public partial class BaseForm : Form
     {
+        [Category("Design")]
         public MenuStrip TitleBar { get; set; }
 
         public BaseForm() 
@@ -41,7 +42,8 @@ namespace Aurora.Viewer
             };
             Item_Close.Click += (sender, e) => Close();
             TitleBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
-            TitleBar.MouseDoubleClick += (sender, e) => Item_Max.PerformClick();
+            // why not correct action XD
+            // TitleBar.DoubleClick += (sender, e) => Item_Max.PerformClick();
 
             ResumeLayout();
         }
