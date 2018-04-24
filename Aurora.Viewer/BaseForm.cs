@@ -7,7 +7,7 @@ namespace Aurora.Viewer
     public partial class BaseForm : Form
     {
 
-        Public MenuStrip FormBar { get; set; }
+        public MenuStrip FormBar { get; set; }
 
         public BaseForm() 
         {
