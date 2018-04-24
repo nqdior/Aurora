@@ -6,6 +6,9 @@ namespace Aurora.Viewer
 {
     public partial class BaseForm : Form
     {
+
+        Public MenuStrip FormBar { get; set; }
+
         public BaseForm() 
         {
             ControlBox = false;
@@ -27,7 +30,7 @@ namespace Aurora.Viewer
             var Button_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
             Button_Close.Alignment = ToolStripItemAlignment.Right;        
 
-            var FormBar = new MenuStrip();
+            FormBar = new MenuStrip();
             FormBar.Items.AddRange(new ToolStripItem[] { Button_Close, Button_Max, Button_Min });
             Controls.Add(FormBar);
 
