@@ -2,10 +2,19 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Aurora.Viewer
+namespace Aurora.Forms
 {
     public partial class BaseForm : Form
     {
+        private ToolStripMenuItem Item_Title;
+
+        [Category("Design")]
+        public string Title
+        {
+            get { return Item_Title.Text; }
+            set { Item_Title.Text = value; }
+        }
+
         [Category("Design")]
         public MenuStrip TitleBar { get; set; }
 
@@ -28,10 +37,13 @@ namespace Aurora.Viewer
             Item_Max.Alignment = ToolStripItemAlignment.Right;
 
             var Item_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
-            Item_Close.Alignment = ToolStripItemAlignment.Right;        
+            Item_Close.Alignment = ToolStripItemAlignment.Right;
+
+            Item_Title = new ToolStripMenuItem();
+            Item_Title.Alignment = ToolStripItemAlignment.Left;
 
             TitleBar = new MenuStrip();
-            TitleBar.Items.AddRange(new ToolStripItem[] { Item_Close, Item_Max, Item_Min });
+            TitleBar.Items.AddRange(new ToolStripItem[] { Item_Close, Item_Max, Item_Min, Item_Title });
             Controls.Add(TitleBar);
 
             Item_Min.Click += (sender, e) => WindowState = FormWindowState.Minimized;

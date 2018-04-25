@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Data", "Aurora.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Viewer", "Aurora.Viewer\Aurora.Viewer.csproj", "{63E9F192-8324-43C4-B097-82BD431E0233}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Forms", "Aurora.Forms\Aurora.Forms.csproj", "{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Data.SqlClient", "Aurora.Data.SqlClient\Aurora.Data.SqlClient.csproj", "{FAB4FB39-29DB-41AC-9AB9-A55985384656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{63E9F192-8324-43C4-B097-82BD431E0233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E9F192-8324-43C4-B097-82BD431E0233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63E9F192-8324-43C4-B097-82BD431E0233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

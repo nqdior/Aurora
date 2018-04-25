@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Aurora.Viewer
+namespace Aurora.Forms
 {
     public static class FormManager
     {

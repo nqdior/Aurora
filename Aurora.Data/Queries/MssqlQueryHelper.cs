@@ -2,6 +2,7 @@
 
 namespace Aurora.Data.Queries
 {
+    // TODO:やっぱりコマンドごとにクラスわけする
     public static class MssqlQueryHelper
     {
         public static string DatabaseListQuery() => Resources.MSSQL_DATABASES;

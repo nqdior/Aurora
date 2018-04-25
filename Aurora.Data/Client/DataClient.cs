@@ -13,6 +13,8 @@ namespace Aurora.Data.Client
     public class DataClient : IDisposable
     {
         private readonly DbConnection _connection;
+
+        private DbTransaction _transaction;
         
         public DataClient(Server server)
         { 
@@ -22,6 +24,12 @@ namespace Aurora.Data.Client
         public void Open() => _connection.Open();
 
         public void Close() => _connection.Close();
+
+        public void BeginTransaction() => _transaction = _connection.BeginTransaction();
+
+        public void CommitTransaction() => _transaction.Commit();
+
+        public void RollbackTransaction() => _transaction.Rollback();
 
         public ConnectionState State => _connection.State;
 
