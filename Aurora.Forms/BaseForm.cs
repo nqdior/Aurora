@@ -9,7 +9,7 @@ namespace Aurora.Forms
         private ToolStripMenuItem Item_Title;
 
         [Category("Design")]
-        public string Title
+        public new string Text
         {
             get { return Item_Title.Text; }
             set { Item_Title.Text = value; }
@@ -30,17 +30,28 @@ namespace Aurora.Forms
 
             var resource = new ComponentResourceManager(typeof(BaseForm));
 
-            var Item_Min = new ToolStripMenuItem((Image)resource.GetObject("Min"));
-            Item_Min.Alignment = ToolStripItemAlignment.Right;
+            var Item_Min = new ToolStripMenuItem()
+            {
+                Alignment = ToolStripItemAlignment.Right,
+                Image = (Image)resource.GetObject("Min")
+            };
 
-            var Item_Max = new ToolStripMenuItem((Image)resource.GetObject("Max"));
-            Item_Max.Alignment = ToolStripItemAlignment.Right;
+            var Item_Max = new ToolStripMenuItem()
+            {
+                Alignment = ToolStripItemAlignment.Right,
+                Image = (Image)resource.GetObject("Max")
+            };
 
-            var Item_Close = new ToolStripMenuItem((Image)resource.GetObject("Close"));
-            Item_Close.Alignment = ToolStripItemAlignment.Right;
+            var Item_Close = new ToolStripMenuItem()
+            {
+                Alignment = ToolStripItemAlignment.Right,
+                Image = (Image)resource.GetObject("Close")
+            };
 
-            Item_Title = new ToolStripMenuItem();
-            Item_Title.Alignment = ToolStripItemAlignment.Left;
+            Item_Title = new ToolStripMenuItem()
+            {
+                Alignment = ToolStripItemAlignment.Left,
+            };
 
             TitleBar = new MenuStrip();
             TitleBar.Items.AddRange(new ToolStripItem[] { Item_Close, Item_Max, Item_Min, Item_Title });
@@ -54,8 +65,7 @@ namespace Aurora.Forms
             };
             Item_Close.Click += (sender, e) => Close();
             TitleBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
-            // why not correct action XD
-            // TitleBar.DoubleClick += (sender, e) => Item_Max.PerformClick();
+            TitleBar.DoubleClick += (sender, e) => Item_Max.PerformClick();
 
             ResumeLayout();
         }

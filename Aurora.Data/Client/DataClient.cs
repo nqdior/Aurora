@@ -33,9 +33,7 @@ namespace Aurora.Data.Client
 
         public ConnectionState State => _connection.State;
 
-        public void Execute(string query) => Execute(new Collection<string>() { query });
-
-        public void Execute(Collection<string> queries) => queries.ToList().ForEach(query => _connection.Execute(query));
+        public int Execute(string query) => _connection.Execute(query);
 
         public IEnumerable<dynamic> GetData(string query) => GetData<dynamic>(query);
 

@@ -49,7 +49,7 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>aurora.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\aurora.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -108,40 +108,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\Connection\CommandFactory.cs" />
-    <Compile Include="Client\Connection\AdapterFactory.cs" />
-    <Compile Include="Client\Connection\BuilderProvider.cs" />
-    <Compile Include="Client\Connection\ConnectionFactory.cs" />
+    <Compile Include="Client\CommandBuilderFactory.cs" />
+    <Compile Include="Client\CommandFactory.cs" />
+    <Compile Include="Client\AdapterFactory.cs" />
+    <Compile Include="Client\BuilderProvider.cs" />
+    <Compile Include="Client\ConnectionFactory.cs" />
     <Compile Include="Client\DataClient.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Servers.cs" />
     <Compile Include="Client\MSDataClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Queries\MariadbQueryHelper.cs" />
-    <Compile Include="Queries\OracleQueryHelper.cs" />
-    <Compile Include="Queries\SqliteQueryHelper.cs" />
-    <Compile Include="Queries\PgsqlQueryHelper.cs" />
-    <Compile Include="Queries\MysqlQueryHelper.cs" />
-    <Compile Include="Queries\MssqlQueryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="Properties\App.config" />
+    <None Include="Properties\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="aurora.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Content Include="Properties\aurora.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

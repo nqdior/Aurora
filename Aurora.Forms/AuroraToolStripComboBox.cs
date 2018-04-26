@@ -22,6 +22,7 @@ namespace Aurora.Viewer
 
         private void SetObjectProperty()
         {
+            Font = new System.Drawing.Font("Consolas", 9);
             Alignment = ToolStripItemAlignment.Right;
             DropDownStyle = ComboBoxStyle.DropDownList;
             FlatStyle = FlatStyle.Flat;

@@ -23,22 +23,44 @@ namespace Aurora.Data.Client
             };
         }
 
-        public int FillData(string query, string tableName)
+        public DataTable FillData(string query, string tableName)
         {
-            using (var _command = new CommandFactory(_server.Engine).CreateCommand(query))
+            using (var command = new CommandFactory(_server.Engine).CreateCommand(query))
             {
-                _command.Connection = _server.Connection;
-                return FillData(_command, tableName);
+                command.Connection = _server.Connection;
+                return FillData(command, tableName);
             }
         }
 
-        private int FillData(DbCommand command, string tableName)
+        private DataTable FillData(DbCommand command, string tableName)
         {
-            using (var _adapter = new AdapterFactory(_server.Engine).CreateAdapter())
+            using (var adapter = new AdapterFactory(_server.Engine).CreateAdapter())
             {
-                _adapter.SelectCommand = command;
-                _adapter.FillSchema(_dataSet, SchemaType.Mapped);
-                return _adapter.Fill(_dataSet, tableName);
+                adapter.SelectCommand = command;
+                adapter.FillSchema(_dataSet, SchemaType.Mapped);
+                adapter.Fill(_dataSet, tableName);
+                return _dataSet.Tables[tableName];
+            }
+        }
+
+        public int Update(string query, string tableName)
+        {
+            using (var command = new CommandFactory(_server.Engine).CreateCommand(query))
+            {
+                command.Connection = _server.Connection;
+                return Update(command, tableName);
+            }
+        }
+
+        private int Update(DbCommand command, string tableName)
+        {
+            using (var builder = new CommandBuilderFactory(_server.Engine).CreateCommandBuilder())
+            using (var adapter = new AdapterFactory(_server.Engine).CreateAdapter())
+            {
+                adapter.SelectCommand = command;
+                builder.DataAdapter = adapter;
+                builder.GetUpdateCommand();
+                return adapter.Update(Tables[tableName]);
             }
         }
 
