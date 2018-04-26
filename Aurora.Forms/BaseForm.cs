@@ -66,6 +66,7 @@ namespace Aurora.Forms
             Item_Close.Click += (sender, e) => Close();
             TitleBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
             TitleBar.DoubleClick += (sender, e) => Item_Max.PerformClick();
+            Load += (sender, e) => TitleBar.SendToBack();
 
             ResumeLayout();
         }
