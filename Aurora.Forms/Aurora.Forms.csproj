@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Azuki, Version=1.7.13.20355, Culture=neutral, PublicKeyToken=46b77eb7f2d82aba, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Azuki\Azuki.dll</HintPath>
+    </Reference>
+    <Reference Include="FreeView.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c68645abd4e52e57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Azuki\FreeView.Sql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -42,14 +50,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuroraDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AuroraTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AuroraTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="AuroraToolStripComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Azuki\SQLKeywordHighlighter.cs" />
+    <Compile Include="Azuki\TextBoxConfiguration.cs" />
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForDevelop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForDevelop.Designer.cs">
+      <DependentUpon>ForDevelop.cs</DependentUpon>
     </Compile>
     <Compile Include="FormManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +80,17 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForDevelop.resx">
+      <DependentUpon>ForDevelop.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Azuki\Azuki.dll" />
+    <Content Include="Azuki\FreeView.Sql.dll" />
+    <Content Include="Azuki\SQLKeyword.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

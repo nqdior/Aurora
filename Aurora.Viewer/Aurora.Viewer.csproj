@@ -40,7 +40,8 @@
     <ApplicationIcon>aurora.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurora.Forms">
+    <Reference Include="Aurora.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Aurora.Forms\bin\Debug\Aurora.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Aurora.Model">
@@ -78,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aurora.ico" />
+    <Content Include="SQLKeyword.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aurora.Data\Aurora.Data.csproj">

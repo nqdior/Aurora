@@ -19,6 +19,7 @@ namespace Aurora.Viewer
         public MainForm()
         {
             UserInitializeComponent();
+            new ForDevelop().Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -45,6 +46,9 @@ namespace Aurora.Viewer
             }
         }
 
+        /// <summary>
+        /// 自動生成
+        /// </summary>
         private new void InitializeComponent()
         {
             this.auroraTabControl1 = new Aurora.Forms.AuroraTabControl();
@@ -150,9 +154,6 @@ namespace Aurora.Viewer
             TitleBar.Items.Add(Select_Server);
 
             Text = "Aurora";
-
-
-
 
             ResumeLayout(false);
             PerformLayout();
