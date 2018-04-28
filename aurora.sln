@@ -12,6 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Viewer", "Aurora.Vie
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Forms", "Aurora.Forms\Aurora.Forms.csproj", "{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AC9BDFA-32E8-473E-AC18-71E6BD214498} = {8AC9BDFA-32E8-473E-AC18-71E6BD214498}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Model", "Aurora.Model\Aurora.Model.csproj", "{FAB4FB39-29DB-41AC-9AB9-A55985384656}"
 	ProjectSection(ProjectDependencies) = postProject

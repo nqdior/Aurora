@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aurora.Forms</RootNamespace>
     <AssemblyName>Aurora.Forms</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aurora.Data">
+      <HintPath>..\Aurora.Data\bin\Debug\Aurora.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Azuki, Version=1.7.13.20355, Culture=neutral, PublicKeyToken=46b77eb7f2d82aba, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Azuki\Azuki.dll</HintPath>
@@ -42,8 +46,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>CustomTabControl\JacksonSoft.CustomTabControl.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
+    <Reference Include="Npgsql, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -75,11 +83,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CharType.cs" />
-    <Compile Include="ForDevelop.cs">
+    <Compile Include="ConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForDevelop.Designer.cs">
-      <DependentUpon>ForDevelop.cs</DependentUpon>
+    <Compile Include="ConnectionForm.Designer.cs">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,8 +96,8 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForDevelop.resx">
-      <DependentUpon>ForDevelop.cs</DependentUpon>
+    <EmbeddedResource Include="ConnectionForm.resx">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

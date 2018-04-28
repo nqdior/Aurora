@@ -1,6 +1,6 @@
-﻿namespace Aurora.Forms
+﻿namespace Aurora.Viewer
 {
-    partial class ForDevelop
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -26,19 +26,17 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
             this.SuspendLayout();
             // 
-            // ForDevelop
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 442);
-            this.Name = "ForDevelop";
-            this.Text = "ForDevelop";
-            this.Load += new System.EventHandler(this.ForDevelop_Load);
+            this.ClientSize = new System.Drawing.Size(284, 284);
+            this.Name = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -1,17 +1,20 @@
-﻿using System.Windows.Forms;
+﻿using Aurora.Data;
+using System.Windows.Forms;
 
 namespace Aurora.Forms
 {
     public class AuroraTabPage : TabPage
     {
-        public AuroraTabPage()
-        {
-            InitializeComponent();
-        }
+        public Server Server { get; set; }
 
-        public AuroraTabPage(string text = "") : base(text)
+        public AuroraTextBox TextBox { get; set; } = new AuroraTextBox();
+
+        public AuroraDataGridView DataGridView { get; set; } = new AuroraDataGridView();
+
+        public AuroraTabPage(string text) : base(text)
         {
             InitializeComponent();
+            Server = new Server(Text, Engine.SqlServer);
         }
 
         private void InitializeComponent()
@@ -21,11 +24,9 @@ namespace Aurora.Forms
                 Dock = DockStyle.Fill,
                 Orientation = Orientation.Horizontal
             };
-            var textBox = new AuroraTextBox();
-            var dataGridView = new AuroraDataGridView();
 
-            splitter.Panel1.Controls.Add(dataGridView);
-            splitter.Panel2.Controls.Add(textBox);
+            splitter.Panel1.Controls.Add(DataGridView);
+            splitter.Panel2.Controls.Add(TextBox);
 
             Controls.Add(splitter);
         }

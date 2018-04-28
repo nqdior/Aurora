@@ -17,5 +17,7 @@ namespace Aurora.Data
         public static int ToIndex(this Engine engine) => (int)engine;
 
         public static Engine ToEngine(this int index) => (Engine)Enum.ToObject(typeof(Engine), index);
+
+        public static Engine ToEngine(this string value) => (Engine)Enum.Parse(typeof(Engine), value, true);
     }
 }
