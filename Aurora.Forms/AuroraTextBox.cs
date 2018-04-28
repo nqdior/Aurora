@@ -1,11 +1,15 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 using Aurora.Forms.Azuki;
+using Sgry.Azuki;
+using FreeView.Sql;
 
 namespace Aurora.Forms
 {
     public partial class AuroraTextBox : Sgry.Azuki.WinForms.AzukiControl
     {
+        public void SetColor(CharType charType, Color foreColor, Color backColor) => ColorScheme.SetColor(charType.ToCharClass(), foreColor, backColor);
+
         public AuroraTextBox()
         {
             InitializeComponent();
@@ -14,52 +18,43 @@ namespace Aurora.Forms
 
         private void InitializeComponent()
         {
-            Sgry.Azuki.FontInfo fontInfo1 = new Sgry.Azuki.FontInfo();
-            SuspendLayout();
-            // 
-            // azukiControl
-            // 
-            BackColor = Color.Black;
             BorderStyle = BorderStyle.FixedSingle;
-            Cursor = Cursors.IBeam;
-            DrawingOption = (((((Sgry.Azuki.DrawingOption.DrawsFullWidthSpace
-            | Sgry.Azuki.DrawingOption.DrawsTab)
-            | Sgry.Azuki.DrawingOption.DrawsEol)
-            | Sgry.Azuki.DrawingOption.HighlightCurrentLine)
-            | Sgry.Azuki.DrawingOption.ShowsDirtBar)
-            | Sgry.Azuki.DrawingOption.HighlightsMatchedBracket);
+            DrawingOption = (((((DrawingOption.DrawsFullWidthSpace
+            | DrawingOption.DrawsTab)
+            | DrawingOption.DrawsEol)
+            | DrawingOption.HighlightCurrentLine)
+            | DrawingOption.ShowsDirtBar)
+            | DrawingOption.HighlightsMatchedBracket);
             FirstVisibleLine = 0;
-            Font = new Font("Consolas", 9F);
-            fontInfo1.Name = "Consolas";
-            fontInfo1.Size = 9;
-            fontInfo1.Style = FontStyle.Regular;
-            FontInfo = fontInfo1;
-            ForeColor = Color.White;
-            ImeMode = ImeMode.Alpha;
-            Location = new Point(0, 0);
-            ScrollPos = new Point(0, 0);
             ShowsLineNumber = false;
             ShowsVScrollBar = false;
-            Size = new Size(0, 0);
-            TabIndex = 0;
-            UseCtrlTabToMoveFocus = false;
-            ViewType = Sgry.Azuki.ViewType.WrappedProportional;
-            ViewWidth = 4101;
-            Dock = DockStyle.Fill;
             ShowsHScrollBar = false;
-            ImeMode = ImeMode.Alpha;
+            UseCtrlTabToMoveFocus = false;
 
-            MinimumSize = new Size(256, 128);
-            ColorScheme.SetColor(Sgry.Azuki.CharClass.Keyword, Color.Aqua, Color.Black);
-            ColorScheme.SetColor(Sgry.Azuki.CharClass.String, Color.Red, Color.Black);
-            ColorScheme.SetColor(Sgry.Azuki.CharClass.Comment, Color.Lime, Color.Black);
-            ColorScheme.SetColor(Sgry.Azuki.CharClass.Number, Color.Yellow, Color.Black);
+            ViewType = ViewType.WrappedProportional;
+            Dock = DockStyle.Fill;
+            ColorScheme.SetColor(CharClass.Keyword, Color.Blue, Color.White);
+            ColorScheme.SetColor(CharClass.String, Color.Red, Color.White);
+            ColorScheme.SetColor(CharClass.Comment, Color.Green, Color.White);
+            ColorScheme.SetColor(CharClass.Number, Color.Yellow, Color.White);
 
-            // 
-            // CommandBox
-            // 
-            Size = new Size(230, 62);
             ResumeLayout(false);
+        }
+
+        public void ClearText() => Text = string.Empty;
+
+        public void FormatText(bool isUseNewline = false)
+        {
+            var rule = new SqlRule();
+            rule.IndentString = isUseNewline ? "    " : "";
+            var formatter = new SqlFormatter(rule);
+            var formattedText = formatter.Format(Text);
+
+            if (!isUseNewline)
+            {
+                formattedText = formattedText.Replace(System.Environment.NewLine, " ");
+            };
+            Text = formattedText;
         }
     }
 }

@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Azuki\FreeView.Sql.dll</HintPath>
     </Reference>
+    <Reference Include="JacksonSoft.CustomTabControl, Version=1.0.1.7, Culture=neutral, PublicKeyToken=53c237210c7e462d, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CustomTabControl\JacksonSoft.CustomTabControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -56,6 +60,9 @@
     <Compile Include="AuroraTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="AuroraTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AuroraTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -67,6 +74,7 @@
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CharType.cs" />
     <Compile Include="ForDevelop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +99,7 @@
     <Content Include="Azuki\SQLKeyword.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomTabControl\JacksonSoft.CustomTabControl.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

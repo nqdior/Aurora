@@ -21,6 +21,7 @@ namespace Aurora.Forms
 
         private void ForDevelop_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

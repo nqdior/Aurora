@@ -6,6 +6,7 @@ namespace Aurora.Forms
     {
         public AuroraDataGridView()
         {
+            Dock = DockStyle.Fill;
             EnableHeadersVisualStyles = false;
         }
     }
