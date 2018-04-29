@@ -34,8 +34,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button_remove = new System.Windows.Forms.Button();
             this.button_add = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.watermarkTextBox1 = new Aurora.Forms.WatermarkTextBox();
+            this.select_Engine = new System.Windows.Forms.ComboBox();
+            this.textBox_Name = new Aurora.Forms.WatermarkTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,8 +76,8 @@
             // 
             this.panel2.Controls.Add(this.button_remove);
             this.panel2.Controls.Add(this.button_add);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.watermarkTextBox1);
+            this.panel2.Controls.Add(this.select_Engine);
+            this.panel2.Controls.Add(this.textBox_Name);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -106,24 +106,24 @@
             this.button_add.UseVisualStyleBackColor = true;
             this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
-            // comboBox1
+            // select_Engine
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 8);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 22);
-            this.comboBox1.TabIndex = 1;
+            this.select_Engine.Font = new System.Drawing.Font("Consolas", 9F);
+            this.select_Engine.FormattingEnabled = true;
+            this.select_Engine.Location = new System.Drawing.Point(12, 8);
+            this.select_Engine.Name = "select_Engine";
+            this.select_Engine.Size = new System.Drawing.Size(121, 22);
+            this.select_Engine.TabIndex = 1;
             // 
-            // watermarkTextBox1
+            // textBox_Name
             // 
-            this.watermarkTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.watermarkTextBox1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.watermarkTextBox1.Location = new System.Drawing.Point(139, 8);
-            this.watermarkTextBox1.Name = "watermarkTextBox1";
-            this.watermarkTextBox1.Size = new System.Drawing.Size(184, 22);
-            this.watermarkTextBox1.TabIndex = 0;
-            this.watermarkTextBox1.WatermarkText = "ServerName";
+            this.textBox_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_Name.Font = new System.Drawing.Font("Consolas", 9F);
+            this.textBox_Name.Location = new System.Drawing.Point(139, 8);
+            this.textBox_Name.Name = "textBox_Name";
+            this.textBox_Name.Size = new System.Drawing.Size(184, 22);
+            this.textBox_Name.TabIndex = 0;
+            this.textBox_Name.WatermarkText = "ServerName";
             // 
             // ConnectionForm
             // 
@@ -147,8 +147,8 @@
         private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private WatermarkTextBox watermarkTextBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private WatermarkTextBox textBox_Name;
+        private System.Windows.Forms.ComboBox select_Engine;
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Button button_remove;
     }

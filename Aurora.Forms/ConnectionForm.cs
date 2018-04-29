@@ -9,34 +9,48 @@ using System.Windows.Forms;
 namespace Aurora.Forms
 {
     /// <summary>
-    /// TODO:OK,Cancel
+    /// Setting connection string informations. 
     /// </summary>
     public partial class ConnectionForm : BaseForm
     {
+        /// <summary>
+        /// servers setting.
+        /// </summary>
         private Servers _servers;
 
+        /// <summary>
+        /// original servers setting.
+        /// </summary>
         private Servers _default;
 
-        private string _oldKey = "";
+        /// <summary>
+        /// pre selected server.
+        /// </summary>
+        private Server _oldKey;
 
-        private string selectedKey => listBox.SelectedItem?.ToString().Split('<')[0].Trim();
+        /// <summary>
+        /// selected server.
+        /// </summary>
+        private Server selectedServer => _servers[listBox.SelectedItem?.ToString().Split('<')[0].Trim()];
 
-        private void ChangeSelectServer(Server value)
-        {
-            watermarkTextBox1.Text = value.Name;
-            comboBox1.Text = value.Engine.ToString();
-        }
-
+        /// <summary>
+        /// Return changed servers information when this closed.
+        /// </summary>
+        /// <returns>Changed _servers</returns>
         public new Servers ShowDialog()
         {
             base.ShowDialog();
-            if (selectedKey != null)
+            if (selectedServer != null)
             {
-                _servers[selectedKey].Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
+                selectedServer.Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
             }
             return _servers;
         }
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="servers"></param>
         public ConnectionForm(Servers servers)
         {
             InitializeComponent();
@@ -45,12 +59,22 @@ namespace Aurora.Forms
             _default = _servers.Clone();
         }
 
+        /// <summary>
+        /// Add _servers object to listbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = Enum.GetValues(typeof(Engine));
+            select_Engine.DataSource = Enum.GetValues(typeof(Engine));
             _servers.Select(server => listBox.Items.Add($"{server.Value.Name} <{server.Value.Engine.ToString()}>")).ToList();
         }
 
+        /// <summary>
+        /// PropertyGrid's setting write to _servers when listbox's item has focus.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listBox.SelectedIndex == -1)
@@ -60,19 +84,34 @@ namespace Aurora.Forms
             }
             if (propertyGrid.SelectedObject != null)
             {
-                _servers[_oldKey].Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
+                _oldKey.Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
             }
-            _oldKey = selectedKey;
+            _oldKey = selectedServer;
 
-            var server = _servers[selectedKey];
+            var server = selectedServer;
             ChangeSelectServer(server);
             SetPropertyObject(server);
         }
 
+        /// <summary>
+        /// Write selected listbox's item to input area.
+        /// </summary>
+        /// <param name="value"></param>
+        private void ChangeSelectServer(Server value)
+        {
+            textBox_Name.Text = value.Name;
+            select_Engine.Text = value.Engine.ToString();
+        }
+
+        /// <summary>
+        /// Server add to listbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(watermarkTextBox1.Text)) return;
-            var server = new Server(watermarkTextBox1.Text, comboBox1.Text.ToEngine());
+            if (string.IsNullOrEmpty(textBox_Name.Text)) return;
+            var server = new Server(textBox_Name.Text, select_Engine.Text.ToEngine());
 
             try
             {
@@ -85,15 +124,26 @@ namespace Aurora.Forms
             }
         }
 
+        /// <summary>
+        /// The server remove from listbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_remove_Click(object sender, EventArgs e)
         {
-            if (selectedKey == null) return;
+            if (selectedServer == null) return;
+
             ChangeSelectServer(new Server("", Engine.SqlServer));
             propertyGrid.SelectedObject = null;
-            _servers.Remove(selectedKey);
+            _servers.Remove(selectedServer.Name);
+
             listBox.Items.RemoveAt(listBox.SelectedIndex);
         }
 
+        /// <summary>
+        /// PropertyGrid's datasource setting.
+        /// </summary>
+        /// <param name="server"></param>
         private void SetPropertyObject(Server server)
         {
             switch (server.Engine)
