@@ -46,9 +46,9 @@
             // 
             this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid.Font = new System.Drawing.Font("Consolas", 9F);
-            this.propertyGrid.Location = new System.Drawing.Point(202, 0);
+            this.propertyGrid.Location = new System.Drawing.Point(167, 0);
             this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.Size = new System.Drawing.Size(511, 344);
+            this.propertyGrid.Size = new System.Drawing.Size(546, 320);
             this.propertyGrid.TabIndex = 0;
             // 
             // listBox
@@ -59,7 +59,7 @@
             this.listBox.ItemHeight = 14;
             this.listBox.Location = new System.Drawing.Point(0, 0);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(202, 344);
+            this.listBox.Size = new System.Drawing.Size(167, 320);
             this.listBox.TabIndex = 1;
             this.listBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
@@ -67,11 +67,10 @@
             // 
             this.panel1.Controls.Add(this.propertyGrid);
             this.panel1.Controls.Add(this.listBox);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(713, 383);
+            this.panel1.Size = new System.Drawing.Size(713, 320);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -90,6 +89,8 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Cancel.AutoEllipsis = true;
             this.button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Cancel.Font = new System.Drawing.Font("Consolas", 9F);
             this.button_Cancel.Location = new System.Drawing.Point(628, 7);
@@ -102,6 +103,8 @@
             // 
             // button_Apply
             // 
+            this.button_Apply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Apply.AutoEllipsis = true;
             this.button_Apply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Apply.Font = new System.Drawing.Font("Consolas", 9F);
             this.button_Apply.Location = new System.Drawing.Point(546, 7);
@@ -162,6 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 383);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Name = "ConnectionForm";
             this.Load += new System.EventHandler(this.ConnectionForm_Load);
             this.panel1.ResumeLayout(false);
