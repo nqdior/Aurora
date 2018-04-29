@@ -31,7 +31,7 @@ namespace Aurora.Forms
         /// <summary>
         /// selected server.
         /// </summary>
-        private Server selectedServer => _servers[listBox.SelectedItem?.ToString().Split('<')[0].Trim()];
+        private Server selectedServer => _servers[listBox.SelectedItem.ToString().Split('<')[0].Trim()];
 
         /// <summary>
         /// Return changed servers information when this closed.
@@ -40,10 +40,6 @@ namespace Aurora.Forms
         public new Servers ShowDialog()
         {
             base.ShowDialog();
-            if (selectedServer != null)
-            {
-                selectedServer.Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
-            }
             return _servers;
         }
 
@@ -79,7 +75,7 @@ namespace Aurora.Forms
         {
             if (listBox.SelectedIndex == -1)
             {
-                ChangeSelectServer(new Server("", Engine.SqlServer));
+                ShowSelectedServer(new Server("", Engine.SqlServer));
                 return;
             }
             if (propertyGrid.SelectedObject != null)
@@ -87,20 +83,8 @@ namespace Aurora.Forms
                 _oldKey.Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
             }
             _oldKey = selectedServer;
-
             var server = selectedServer;
-            ChangeSelectServer(server);
-            SetPropertyObject(server);
-        }
-
-        /// <summary>
-        /// Write selected listbox's item to input area.
-        /// </summary>
-        /// <param name="value"></param>
-        private void ChangeSelectServer(Server value)
-        {
-            textBox_Name.Text = value.Name;
-            select_Engine.Text = value.Engine.ToString();
+            ShowSelectedServer(server);
         }
 
         /// <summary>
@@ -125,7 +109,7 @@ namespace Aurora.Forms
         }
 
         /// <summary>
-        /// The server remove from listbox.
+        /// The selected server remove from listbox and object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -133,11 +117,46 @@ namespace Aurora.Forms
         {
             if (selectedServer == null) return;
 
-            ChangeSelectServer(new Server("", Engine.SqlServer));
-            propertyGrid.SelectedObject = null;
-            _servers.Remove(selectedServer.Name);
+            ShowSelectedServer(new Server("", Engine.SqlServer));
 
+            _servers.Remove(selectedServer.Name);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+        }
+
+        /// <summary>
+        /// Connection setting save and form close.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_Apply_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedIndex != -1)
+            {
+                selectedServer.Connection.ConnectionString = ((DbConnectionStringBuilder)propertyGrid.SelectedObject).ToString();
+            }
+            Close();
+        }
+
+        /// <summary>
+        /// Connection setting abort and form close.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            _servers = _default;
+            Close();
+        }
+
+        /// <summary>
+        /// Write selected listbox's item to input area.
+        /// </summary>
+        /// <param name="server"></param>
+        private void ShowSelectedServer(Server server)
+        {
+            textBox_Name.Text = server.Name;
+            select_Engine.Text = server.Engine.ToString();
+            SetPropertyObject(server);
         }
 
         /// <summary>
@@ -167,7 +186,8 @@ namespace Aurora.Forms
                     propertyGrid.SelectedObject = BuilderProvider.OracleConnectionStringBuilder(server.Connection.ConnectionString);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    propertyGrid.SelectedObject = null;
+                    break;
             }
         }
     }
