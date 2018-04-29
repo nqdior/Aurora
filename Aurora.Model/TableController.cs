@@ -10,7 +10,7 @@ namespace Aurora.Model
     {
         private readonly MSDataClient _client;
 
-        public DataTableCollection Tables => _client.Tables;
+        public DataTables Tables { get; set; } = new DataTables();
 
         public TableController(Server server)
         {
@@ -26,7 +26,8 @@ namespace Aurora.Model
             try
             {
                 _client.Open();
-                return function.Invoke(query, tableName);
+                Tables.Add(tableName, function.Invoke(query, tableName));
+                return Tables[tableName];
             }
             finally
             {
@@ -62,7 +63,7 @@ namespace Aurora.Model
             {
                 _client.Open();
                 _client.BeginTransaction();
-                _client.Update(query, tableName);
+                _client.Update(query, Tables[tableName]);
                 _client.CommitTransaction();
             }
             catch

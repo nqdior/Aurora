@@ -9,6 +9,8 @@ namespace Aurora.Viewer
     {
         private Servers _servers = new Servers();
 
+        private AuroraToolStripComboBox select_Database;
+
         public MainForm()
         {
             InitializeComponent();
@@ -29,15 +31,15 @@ namespace Aurora.Viewer
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            var server = new Server("test", Engine.SqlServer);
+            var server = new Server("Default", Engine.SqlServer);
             var builder = BuilderProvider.SqlConnectionStringBuilder();
             builder.DataSource = "localhost";
             builder.IntegratedSecurity = true;
             server.Connection.ConnectionString = builder.ToString();
 
             var databases = new SchemaModel(server).GetDatabaseList();
-            //Select_Database.Items.AddRange(databases.ToArray());
-            //Select_Database.SelectedIndex = 0;
+            select_Database.Items.AddRange(databases.ToArray());
+            select_Database.SelectedIndex = 0;
 
             FormConfiguration.Apply(this);
         }
@@ -51,5 +53,9 @@ namespace Aurora.Viewer
             _servers = new ConnectionForm(_servers).ShowDialog();
         }
 
+        private void newPageToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

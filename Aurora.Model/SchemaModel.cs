@@ -18,6 +18,8 @@ namespace Aurora.Model
             _query = new QueryHelper(server.Engine);
         }
 
-        public List<dynamic> GetDatabaseList() => _controller.GetData(_query.DatabaseListQuery()).Select(v => v.name).ToList();        
+        public List<dynamic> GetDatabaseList() => _controller.GetData(_query.DatabaseListQuery()).Select(v => v.name).ToList();
+
+        public List<dynamic> GetTableList() => _controller.GetData(_query.TableListQuery()).Select(v => v.name).ToList();
     }
 }

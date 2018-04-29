@@ -115,6 +115,7 @@
     <Compile Include="Client\BuilderProvider.cs" />
     <Compile Include="Client\ConnectionFactory.cs" />
     <Compile Include="Client\DataClient.cs" />
+    <Compile Include="DataTables.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Servers.cs" />
     <Compile Include="Client\MSDataClient.cs" />

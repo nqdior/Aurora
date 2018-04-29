@@ -11,8 +11,14 @@ namespace Aurora.Forms
         [Category("Design")]
         public new string Text
         {
-            get { return Item_Title.Text; }
-            set { Item_Title.Text = value; }
+            get
+            {
+                return Item_Title.Text;
+            }
+            set
+            {
+                Item_Title.Text = value;
+            }
         }
 
         [Category("Design")]
@@ -55,7 +61,6 @@ namespace Aurora.Forms
 
             TitleBar = new MenuStrip();
             TitleBar.Items.AddRange(new ToolStripItem[] { Item_Close, Item_Max, Item_Min, Item_Title });
-            Controls.Add(TitleBar);
 
             Item_Min.Click += (sender, e) => WindowState = FormWindowState.Minimized;
             Item_Max.Click += (sender, e) =>
@@ -66,7 +71,11 @@ namespace Aurora.Forms
             Item_Close.Click += (sender, e) => Close();
             TitleBar.MouseDown += (sender, e) => FormManager.ConvertMessageMove(e, Handle);
             TitleBar.DoubleClick += (sender, e) => Item_Max.PerformClick();
-            Load += (sender, e) => TitleBar.SendToBack();
+            Load += (sender, e) =>
+            {
+                Controls.Add(TitleBar);
+                TitleBar.SendToBack();
+            };
 
             ResumeLayout();
         }

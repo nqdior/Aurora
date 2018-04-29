@@ -17,5 +17,14 @@ namespace Aurora.Data
             Engine = engine;
             Connection = new ConnectionFactory(engine).CreateConnection();
         }
+
+        public Server Clone()
+        {
+            var clone = new Server(Name, Engine);
+            clone.Connection = new ConnectionFactory(clone.Engine).CreateConnection();
+            clone.Connection.ConnectionString = Connection.ConnectionString;
+            
+            return clone;
+        }
     }
 }

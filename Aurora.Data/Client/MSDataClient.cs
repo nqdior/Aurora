@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Data.Common;
-using System.Globalization;
 
 namespace Aurora.Data.Client
 {
@@ -10,17 +9,9 @@ namespace Aurora.Data.Client
     {
         private readonly Server _server;
 
-        private readonly DataSet _dataSet;
-
-        public DataTableCollection Tables => _dataSet.Tables;
-
         public MSDataClient(Server server) : base(server)
         {
             _server = server;
-            _dataSet = new DataSet()
-            {
-                Locale = CultureInfo.InvariantCulture
-            };
         }
 
         public DataTable FillData(string query, string tableName)
@@ -34,25 +25,25 @@ namespace Aurora.Data.Client
 
         private DataTable FillData(DbCommand command, string tableName)
         {
+            var dataTable = new DataTable(tableName);
             using (var adapter = new AdapterFactory(_server.Engine).CreateAdapter())
             {
                 adapter.SelectCommand = command;
-                adapter.FillSchema(_dataSet, SchemaType.Mapped);
-                adapter.Fill(_dataSet, tableName);
-                return _dataSet.Tables[tableName];
+                adapter.Fill(dataTable);
+                return dataTable;
             }
         }
 
-        public int Update(string query, string tableName)
+        public int Update(string query, DataTable table)
         {
             using (var command = new CommandFactory(_server.Engine).CreateCommand(query))
             {
                 command.Connection = _server.Connection;
-                return Update(command, tableName);
+                return Update(command, table);
             }
         }
 
-        private int Update(DbCommand command, string tableName)
+        private int Update(DbCommand command, DataTable table)
         {
             using (var builder = new CommandBuilderFactory(_server.Engine).CreateCommandBuilder())
             using (var adapter = new AdapterFactory(_server.Engine).CreateAdapter())
@@ -60,13 +51,12 @@ namespace Aurora.Data.Client
                 adapter.SelectCommand = command;
                 builder.DataAdapter = adapter;
                 builder.GetUpdateCommand();
-                return adapter.Update(Tables[tableName]);
+                return adapter.Update(table);
             }
         }
 
         public new void Dispose()
         {
-            _dataSet.Dispose();
             Dispose(true);
             GC.SuppressFinalize(this);
         }
