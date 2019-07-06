@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora", "Aurora.Data\Aurora.csproj", "{8AC9BDFA-32E8-473E-AC18-71E6BD214498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora", "Aurora\Aurora.csproj", "{8AC9BDFA-32E8-473E-AC18-71E6BD214498}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}"
 EndProject
