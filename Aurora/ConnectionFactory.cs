@@ -6,7 +6,7 @@ using System.Data.OracleClient;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 
-namespace Aurora.Data.Client.Connection
+namespace Aurora
 {
     internal sealed class ConnectionFactory
     {

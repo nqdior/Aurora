@@ -1,5 +1,4 @@
-﻿using Aurora.Data.Client.Connection;
-using Dapper;
+﻿using Dapper;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
@@ -37,7 +36,7 @@ namespace Aurora
 
         public void Close() => _connection.Close();
 
-        public void BeginTransaction() => _transaction = _connection.BeginTransaction();
+        public void BeginTransaction(IsolationLevel isolationLevel) => _transaction = _connection.BeginTransaction(isolationLevel);
 
         public void CommitTransaction() => _transaction.Commit();
 
@@ -45,11 +44,11 @@ namespace Aurora
 
         public ConnectionState State => _connection.State;
 
-        public int Execute(string query) => _connection.Execute(query);
+        public int Execute(string query, object param = null, IDbTransaction transaction = null) => _connection.Execute(query, param, transaction);
 
-        public IEnumerable<dynamic> GetData(string query) => GetData<dynamic>(query);
+        public IEnumerable<dynamic> GetData(string query, object param = null, IDbTransaction transaction = null) => _connection.Query<dynamic>(query, param, transaction);
 
-        public IEnumerable<T> GetData<T>(string query) => _connection.Query<T>(query);
+        public IEnumerable<T> GetData<T>(string query, object param = null, IDbTransaction transaction = null) => _connection.Query<T>(query, param, transaction);
 
         private bool disposed = false;
 
