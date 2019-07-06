@@ -1,25 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Data", "Aurora.Data\Aurora.Data.csproj", "{8AC9BDFA-32E8-473E-AC18-71E6BD214498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora", "Aurora.Data\Aurora.csproj", "{8AC9BDFA-32E8-473E-AC18-71E6BD214498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Viewer", "Aurora.Viewer\Aurora.Viewer.csproj", "{63E9F192-8324-43C4-B097-82BD431E0233}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FAB4FB39-29DB-41AC-9AB9-A55985384656} = {FAB4FB39-29DB-41AC-9AB9-A55985384656}
-		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389} = {7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Forms", "Aurora.Forms\Aurora.Forms.csproj", "{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8AC9BDFA-32E8-473E-AC18-71E6BD214498} = {8AC9BDFA-32E8-473E-AC18-71E6BD214498}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Model", "Aurora.Model\Aurora.Model.csproj", "{FAB4FB39-29DB-41AC-9AB9-A55985384656}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8AC9BDFA-32E8-473E-AC18-71E6BD214498} = {8AC9BDFA-32E8-473E-AC18-71E6BD214498}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,20 +17,15 @@ Global
 		{8AC9BDFA-32E8-473E-AC18-71E6BD214498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC9BDFA-32E8-473E-AC18-71E6BD214498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC9BDFA-32E8-473E-AC18-71E6BD214498}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63E9F192-8324-43C4-B097-82BD431E0233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63E9F192-8324-43C4-B097-82BD431E0233}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63E9F192-8324-43C4-B097-82BD431E0233}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63E9F192-8324-43C4-B097-82BD431E0233}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C38DAF1-E0C1-45ED-AE5C-6990CA4FF389}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAB4FB39-29DB-41AC-9AB9-A55985384656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DC41C4-8DBC-4FD1-8B5D-79AE044DEDDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F2A470F-64C5-4474-BBD4-3597FB6B168F}
 	EndGlobalSection
 EndGlobal

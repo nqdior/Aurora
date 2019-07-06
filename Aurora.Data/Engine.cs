@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aurora.Data
+namespace Aurora
 {
     public enum Engine
     {
