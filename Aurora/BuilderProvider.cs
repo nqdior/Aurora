@@ -10,11 +10,17 @@ namespace Aurora
     {
         public static SqlConnectionStringBuilder SqlConnectionStringBuilder => new SqlConnectionStringBuilder();
 
+        #pragma warning disable CS3003
         public static MySqlConnectionStringBuilder MySqlConnectionStringBuilder => new MySqlConnectionStringBuilder();
+        #pragma warning restore CS3003
 
+        #pragma warning disable CS3003
         public static NpgsqlConnectionStringBuilder PGSqlConnectionStringBuilder => new NpgsqlConnectionStringBuilder();
+        #pragma warning restore CS3003
 
+        #pragma warning disable CS3003
         public static MySqlConnectionStringBuilder MariaDBConnectionStringBuilder => new MySqlConnectionStringBuilder();
+        #pragma warning restore CS3003
 
         public static SQLiteConnectionStringBuilder SqliteConnectionStringBuilder => new SQLiteConnectionStringBuilder();
 
