@@ -50,9 +50,50 @@ namespace Aurora
 
         public IEnumerable<T> GetData<T>(string query, object param = null, IDbTransaction transaction = null) => _connection.Query<T>(query, param, transaction);
 
+        public DataTable Fill(string query, string tableName)
+        {
+            using (var command = new CommandFactory(Engine).CreateCommand(query))
+            {
+                command.Connection = _connection;
+                return Fill(command, tableName);
+            }
+        }
+
+        private DataTable Fill(DbCommand query, string tableName)
+        {
+            var dataTable = new DataTable(tableName);
+            using (var adapter = new AdapterFactory(Engine).CreateAdapter())
+            {
+                adapter.SelectCommand = query;
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
+
+        public int Update(string selectQuery, DataTable table)
+        {
+            using (var command = new CommandFactory(Engine).CreateCommand(selectQuery))
+            {
+                command.Connection = _connection;
+                return Update(command, table);
+            }
+        }
+
+        private int Update(DbCommand selectQuery, DataTable table)
+        {
+            using (var builder = new CommandBuilderFactory(Engine).CreateCommandBuilder())
+            using (var adapter = new AdapterFactory(Engine).CreateAdapter())
+            {
+                adapter.SelectCommand = selectQuery;
+                builder.DataAdapter = adapter;
+                builder.GetUpdateCommand();
+                return adapter.Update(table);
+            }
+        }
+
         private bool disposed = false;
 
-        private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+        private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
 
         public void Dispose()
         {
