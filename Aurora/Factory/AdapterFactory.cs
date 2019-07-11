@@ -8,40 +8,37 @@ using System.Data.SQLite;
 
 namespace Aurora
 {
-    internal sealed class CommandFactory
+    internal sealed class AdapterFactory
     {
         private readonly Engine _engine;
 
-        internal CommandFactory(Engine engine)
-        {
-            _engine = engine;
-        }
+        internal AdapterFactory(Engine engine) => _engine = engine;
 
-        public DbCommand CreateCommand(string command)
+        internal DbDataAdapter CreateAdapter()
         {
             switch (_engine)
             {
                 case Engine.SqlServer:
-                    return new SqlCommand(command);
+                    return new SqlDataAdapter();
 
                 case Engine.PostgreSql:
-                    return new NpgsqlCommand(command);
+                    return new NpgsqlDataAdapter();
 
                 case Engine.MySql:
-                    return new MySqlCommand(command);
+                    return new MySqlDataAdapter();
 
                 case Engine.MariaDB:
-                    return new MySqlCommand(command);
+                    return new MySqlDataAdapter();
 
                 case Engine.SQLite:
-                    return new SQLiteCommand(command);
+                    return new SQLiteDataAdapter();
 
                 case Engine.Oracle:
                     #pragma warning disable CS0618
-                    return new OracleCommand(command);
+                    return new OracleDataAdapter();
 
                 default:
-                    throw new IndexOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("engine");
             }
         }
     }

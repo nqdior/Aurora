@@ -10,7 +10,7 @@ using System;
 [assembly: AssemblyTitle("Aurora")]
 [assembly: AssemblyDescription("Multi Database Connection Manager.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Delight")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Aurora")]
 [assembly: AssemblyCopyright("© 2019 nqdior.")]
 [assembly: AssemblyTrademark("")]
@@ -34,8 +34,8 @@ using System;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.7.0.6")]
+[assembly: AssemblyVersion("0.7.1.1")]
 [assembly: CLSCompliant(true)]
-[assembly: AssemblyFileVersion("0.7.0.6")]
+[assembly: AssemblyFileVersion("0.7.1.1")]
 [assembly: NeutralResourcesLanguage("ja-JP")]
 

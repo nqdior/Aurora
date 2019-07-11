@@ -12,10 +12,7 @@ namespace Aurora
     {
         private readonly Engine _engine;
 
-        internal CommandBuilderFactory(Engine engine)
-        {
-            _engine = engine;
-        }
+        internal CommandBuilderFactory(Engine engine) => _engine = engine;
 
         public DbCommandBuilder CreateCommandBuilder()
         {
